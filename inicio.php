@@ -12,6 +12,8 @@ if($categoria == "Restaurantes" ){
     header("location: comidaybebidas.html");
 }else if($categoria== "Tiendas Comerciales"){
     header("location: tiendascomerciales.html");
+}else if($categoria== "Turismo"){
+    header("location: turismo.php");
 }
 
 

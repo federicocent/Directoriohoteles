@@ -1,7 +1,10 @@
 <?php
+include("base.php");
 error_reporting(E_ALL ^ E_NOTICE);
 session_start();
 $username=$_SESSION['usuario'];
+$sql1="SELECT * FROM comentarios";
+$query1=mysqli_query($db,$sql1);
 ?>
 <!DOCTYPE html>
 <html lang="zxx">
@@ -18,6 +21,7 @@ $username=$_SESSION['usuario'];
     <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900&display=swap" rel="stylesheet">
 
     <!-- Css Styles -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
     <link rel="stylesheet" href="css/flaticon.css" type="text/css">
@@ -26,6 +30,19 @@ $username=$_SESSION['usuario'];
     <link rel="stylesheet" href="css/magnific-popup.css" type="text/css">
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
+    <style>
+        .carousel .carousel-item{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            user-select:none;
+        }
+        .carousel-item{
+            width: 500px !important;
+            height: 500px !important ;
+        }
+    </style>
 </head>
 
 <body>
@@ -38,16 +55,14 @@ $username=$_SESSION['usuario'];
     <!-- Header Section Begin -->
     <header class="header-section">
         <div class="container-fluid">
-            <div class="logo">
-                <a href="./index.html"><img src="img/logo.png" alt=""></a>
-            </div>
-            <nav class="main-menu mobile-menu">
+            
+            <nav class="main-menu mobile-menu" style="background-color: rgba(0,0,0,0) ;">
                 <ul>
-                    <li class="active"><a href="index.html">Inicio</a></li>
+                    <li class="active" ><a href="index.html">Inicio</a></li>
                     
                     <li><a href="contact.html">Contacto</a></li>
                 </ul>
-            </nav>
+           
            
             <div class="header-right">
                 
@@ -65,6 +80,7 @@ $username=$_SESSION['usuario'];
                       ?>
                       <a href="cerrarsesion.php" class="ml-5 mr-5">Cerrar Sesion</a>
                       <a id="agregar" href="" >Agregar categoria</a>
+                      </nav>
                      <div id="popup1"style=" background:rgba(0, 0, 0, 0.3); position: fixed; top:0; left: 0; bottom:0; right: 0; display: flex; justify-content: center; align-items: center; transform:translateY(-200px); z-index:1;">
        <div class="card" id="mostrar2" style="width: 20%; background-color: rgb(102, 102, 102);">
           <div class="card-body">
@@ -133,191 +149,38 @@ $username=$_SESSION['usuario'];
        <!-- <img alt="COVID-19" class="img-responsive" src="https://www.paginasamarillas.com.co/view/global/common/images/banner/co/COVID-PARA-PACOM_OKOKOK.png">-->
            
     </div>
-    <section class="trending-restaurant spad">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="section-title">
-                        <h2>Las mejores tendencias de la ciudad</h2>
-                        <p>Explora algunos de los mejores lugares de nuestra región</p>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-6">
-                    <div class="trend-item">
-                        <div class="trend-pic">
-                            <img src="img/trending/trending-1.jpg" alt="">
-                            <div class="rating">4.9</div>
-                        </div>
-                        <div class="trend-text">
-                            <h4>Restaurantes</h4>
-                            <br>
-                            <br>
+    
+    
+    <section>
+   <div class="container">
+       <div class="row">
+           <div class="col sl2">
+               <h1 class="center-aling">Comentarios</h1>
+               <div class="carousel center-aling">
+                   <?php while($row=mysqli_fetch_array($query1)){
 
-                            <a class="closed" href="res.html">Más</a>
-                            
-                        </div>
-                        <div class="tic-text">Más</div>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="trend-item nightlife">
-                        <div class="trend-pic">
-                            <img src="img/trending/trending-2.jpg" alt="">
-                            <div class="rating">4.9</div>
-                        </div>
-                        <div class="trend-text">
-                            <h4>Licores</h4>                          
-                            <br>
-                            <br>
-                            <a class="open" href="licores.html">Más</a>
-                        </div>
-                        <div class="tic-text">Licores</div>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="trend-item hotels">
-                        <div class="trend-pic">
-                            <img src="img/trending/trending-3.jpg" alt="">
-                            <div class="rating">4.6</div>
-                        </div>
-                        <div class="trend-text">
-                            <h4>Hoteles</h4>
-                            <br>
-                            <br>
-                            <a class="closed" href="hotel.html">Más</a>
-                        </div>
-                        <div class="tic-text">Hoteles</div>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="trend-item events">
-                        <div class="trend-pic">
-                            <img src="img/trending/trending-4.jpg" alt="">
-                            <div class="rating">5.0</div>
-                        </div>
-                        <div class="trend-text">
-                            <h4>Comidas Rapidas</h4>
-                            <br>
-                            <br>
-                            <a class="open" href="comr.html">Más</a>
-                        </div>
-                        <div class="tic-text">Comida Rapida</div>
-                    </div>
-                </div>
-            </div>
-        </div>
+                    ?>
+                   <div class="carousel-item" >
+                       <div class="avatar" style=" width:60px; height:60px; border-radius:50px; background-color:#C18BFE; margin-bottom:20px"><h2 style="transform:translateX(20px) translateY(10px); color:whitesmoke"></h2></div>
+                       <h3><?php echo$row['nombre'] ?></h3>
+                       <p><?php echo$row['mensaje'] ?></p>
+                       
+                   </div>
+                   
+                   <?php } ?>
+                   
+                   </div>
+               </div>
+           </div>
+       </div>
+   </div>
+  
     </section>
-    <!-- Trending Restaurant Section End -->
 
-    <!-- Categories Section Begin 
-    <section class="categories-section spad">
-        <div class="container-fluid">
-            <div class="categories-left">
-                <div class="categories-item set-bg large-img" data-setbg="img/categories/cat1.jpg">
-                        <a href="img/categories/cat1.jpg" class="img-hover pop-up"><img src="img/zoom.png" alt=""></a>
-                        <div class="categories-text">
-                            <h4>Comidas Rapidas</h4>
-                            <br>
-                            <a href="comidarapida.html">Ver todo</a>
-                        </div>
-                    </div>
-            </div>
-            <div class="categories-right">
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="categories-item set-bg" data-setbg="img/categories/cat-2.jpg">
-                            <a href="img/categories/cat-2.jpg" class="img-hover pop-up"><img src="img/zoom.png" alt=""></a>
-                            <div class="categories-text">
-                                <h4></h4>
-                                <p>2373 Listings</p>
-                                <a href="#">View All</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="categories-item set-bg" data-setbg="img/categories/cat-3.jpg">
-                            <a href="img/categories/cat-3.jpg" class="img-hover pop-up"><img src="img/zoom.png" alt=""></a>
-                            <div class="categories-text">
-                                <h4>Spa & Resorts</h4>
-                                <p>2373 Listings</p>
-                                <a href="#">View All</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="categories-item set-bg" data-setbg="img/categories/cat-4.jpg">
-                            <a href="img/categories/cat-4.jpg" class="img-hover pop-up"><img src="img/zoom.png" alt=""></a>
-                            <div class="categories-text">
-                                <h4>Hotels</h4>
-                                <p>2373 Listings</p>
-                                <a href="#">View All</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="categories-item set-bg" data-setbg="img/categories/cat-5.jpg">
-                            <a href="img/categories/cat-5.jpg" class="img-hover pop-up"><img src="img/zoom.png" alt=""></a>
-                            <div class="categories-text">
-                                <h4>Clubs & Pubs</h4>
-                                <p>2373 Listings</p>
-                                <a href="#">View All</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    Categories Section End -->
-
-    <!-- Testimonial Section Begin -->
-    <section class="testimonial-section">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-10 offset-lg-1">
-                    <div class="testimonial-item owl-carousel">
-                        <div class="single-testimonial-item">
-                            <img src="img/testimonial-1.png" alt="">
-                            <p>Fusce urna quam, euismod sit amet mollis quis. Fusce urna quam, euismod sit amet mollis
-                                quis, vestibulum quis velit. Vestibulum malesuada aliquet libero viverra cursus. Aliquam
-                                erat volutpat. Morbi id dictum quam, ut commodo lorem. In at nisi nec arcu porttitor
-                                aliquet vitae at dui. Sed sollicitudin nulla non leo viverra.</p>
-                            <h4>Michael Smith</h4>
-                            <span>CEO Company</span>
-                        </div>
-                        <div class="single-testimonial-item">
-                            <img src="img/testimonial-1.png" alt="">
-                            <p>Fusce urna quam, euismod sit amet mollis quis. Fusce urna quam, euismod sit amet mollis
-                                quis, vestibulum quis velit. Vestibulum malesuada aliquet libero viverra cursus. Aliquam
-                                erat volutpat. Morbi id dictum quam, ut commodo lorem. In at nisi nec arcu porttitor
-                                aliquet vitae at dui. Sed sollicitudin nulla non leo viverra.</p>
-                            <h4>Michael Smith</h4>
-                            <span>CEO Company</span>
-                        </div>
-                        <div class="single-testimonial-item">
-                            <img src="img/testimonial-1.png" alt="">
-                            <p>Fusce urna quam, euismod sit amet mollis quis. Fusce urna quam, euismod sit amet mollis
-                                quis, vestibulum quis velit. Vestibulum malesuada aliquet libero viverra cursus. Aliquam
-                                erat volutpat. Morbi id dictum quam, ut commodo lorem. In at nisi nec arcu porttitor
-                                aliquet vitae at dui. Sed sollicitudin nulla non leo viverra.</p>
-                            <h4>Michael Smith</h4>
-                            <span>CEO Company</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="container-fluid">
-            <div class="bg-img">
-                <img src="img/testimonial-bg.png" alt="">
-            </div>
-        </div>
-    </section>
+    
     <!-- Testimonial Section End -->
 
-    <!-- How It Works Section Begin -->
+    <!-- How It Works Section Begin 
     <section class="work-section set-bg" data-setbg="img/line-bg.jpg">
         <div class="container">
             <div class="row">
@@ -359,9 +222,9 @@ $username=$_SESSION['usuario'];
             </div>
         </div>
     </section>
-    <!-- How It Works Section End -->
+     How It Works Section End -->
 
-    <!-- App Section Begin -->
+    <!-- App Section Begin 
     <section class="app-section spad">
         <div class="container">
             <div class="row">
@@ -391,21 +254,14 @@ $username=$_SESSION['usuario'];
             </div>
         </div>
     </section>
-    <!-- App Section End -->
+    App Section End -->
 
 
 
     <!-- Footer Section Begin -->
     <footer class="footer-section spad">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <form action="#" class="newslatter-form">
-                        <input type="text" placeholder="Your email address">
-                        <button type="submit">Subscribe to our Newsletter</button>
-                    </form>
-                </div>
-            </div>
+           
             <div class="row">
                 <div class="col-lg-3 col-sm-6">
                     <div class="footer-widget">
@@ -490,6 +346,7 @@ $username=$_SESSION['usuario'];
     <!-- Footer Section End -->
 
     <!-- Js Plugins -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery.magnific-popup.min.js"></script>
@@ -526,9 +383,18 @@ $username=$_SESSION['usuario'];
             $('.list').html(most1);
             }
         );
+       
+        avatar=document.querySelectorAll('.avatar').parentElement;
+        nombre=avatar.querySelector('h3').innerHTML
+        primerletra=nombre.slice(0,1)
+        div=avatar.querySelector('div')
+        divdentro=div.querySelector('h2')
+        console.log(avatar)
+
         
+        divdentro.innerHTML=primerletra.toUpperCase()
     </script>
-    
+    <script src="js/comentarios.js"></script>
 
 </body>
 

@@ -11,7 +11,7 @@ $mensaje1=$_POST['mensaje1'];
         }else{
             $variable="INSERT INTO comentarios( nombre, correo, mensaje) VALUES('$name1', '$email', '$mensaje1')";
             $query= mysqli_query($db, $variable);
-    
+            header("Location: index.php");
         }
     ?>
     
