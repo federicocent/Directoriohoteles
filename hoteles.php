@@ -156,30 +156,33 @@ $json=array();
 
               ?>
               <a href="#" class="editar"><img style="transform:translateX(800px) translateY(-140px);" src="img/editar.png"></a>
+              <a href="#" class="eliminar"><img style="transform:translateX(830px) translateY(-140px);" src="img/remover.png"></a>
             <?php } ?>
           <a href="" class="mostrar"><img src="fotos/<?php echo$row['nameimg']?>" style=" transform: translateY(-57px) translateX(-20px); " width="300px" height="200px"></a>
           <button  class="btn btn-danger prueba"  style="transform: translateY(20px);"><img src="https://img.icons8.com/material/24/000000/phone--v1.png"/><?php echo$row['telefono']?></button>
           <button  class="btn btn-success prueba1" style="transform: translateY(20px);"><img src="img/whatsapp.png"><?php echo$row['whatsapp']?></button>
-          <p style="transform: translateX(320px) translateY(-160px); margin-left: 10px; "><?php echo$row['descripcion']?></p>
-          <b><h5 style="transform: translateY(-170px) translateX(330px);"><?php echo $row['direccion']?></h5></b></b>
+          <p style="transform: translateX(330px) translateY(-160px); margin-left: 10px; "><?php echo$row['descripcion']?></p>
+          <b><h5 style="transform: translateY(-170px) translateX(350px);"><?php echo $row['direccion']?></h5></b></b>
         </div>
       </div>
       
+      
+      <div class="popup"style=" background:rgba(0, 0, 0, 0.3); position: fixed; top:0; left: 0; bottom:0; right: 0; display: flex; justify-content: center; align-items: center; z-index:2; ">
+        <div class="card" id="mostrar1" style="width: 20%; background-color: rgb(102, 102, 102);">
+          <div class="card-body">
+            <button class="btn btn-danger cerrar" style=" transform:translateY(-50px) translateX(310px)"><img src="img/cerrar.png"></button>
+            <img class="img2"src=""  style="transform: translateX(-55px);" width="200px">
+            <img class="img3"src="" width="200px">
+          </div>
+      </div>
       </div>
       <?php } ?>
       
-      <div id="popup"style=" background:rgba(0, 0, 0, 0.3); position: fixed; top:0; left: 0; bottom:0; right: 0; display: flex; justify-content: center; align-items: center; z-index:2; ">
-        <div class="card" id="mostrar1" style="width: 20%; background-color: rgb(102, 102, 102);">
-          <div class="card-body">
-            <button class="btn btn-danger" id="cerrar"style=" transform:translateY(-50px) translateX(310px)"><img src="img/cerrar.png"></button>
-            <img src="fotos/<?php echo $row['nameimg2'] ?>"  style="transform: translateX(-55px);" width="200px">
-            <img src="fotos/<?php echo $row['nameimg3'] ?>" width="200px">
-          </div>
-      </div>
+     
       
       <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
       <script>
-        $('#popup').hide();
+        $('.popup').hide();
         $('#popup1').hide();
         $('#popup2').hide();
        
@@ -188,12 +191,27 @@ $json=array();
       
 $('.mostrar').click(function (e) {
   e.preventDefault();
-    $('#popup').show()
+    $('.popup').show()
+    variable=$(this)[0].parentElement
+  id=$(variable).attr('num')
+    $.post("imghoteles.php", {id},
+      function (response) {
+        json= JSON.parse(response);
+        img2=''
+        img3=''
+        json.forEach(jsons => {
+          img2=jsons.img2
+          img3=jsons.img3
+            });
+            $('.img2').attr('src','fotos/'+ img2)
+            $('.img3').attr('src','fotos/'+ img3)
+      }
+    );
  
     
 });
-$('#cerrar').click(function(){
-  $('#popup').hide(1000)
+$('.cerrar').click(function(){
+  $('.popup').hide(1000)
 })
 $('#cerrar1').click(function(){
   $('#popup1').hide(1000)
@@ -245,7 +263,16 @@ $('#cerrar2').click(function (e) {
   $('#popup2').hide(1000)
   
 });
-
+$('.eliminar').click(function (e) { 
+  e.preventDefault();
+  variable=$(this)[0].parentElement
+  id=$(variable).attr('num')
+  $.post("eliminarhotel.php", {id},
+    function (response) {
+      
+    }
+  );
+});
       </script>
 </body>
 </html>

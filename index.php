@@ -108,7 +108,7 @@ $username=$_SESSION['usuario'];
                             <div class="category-search">
                                 <h5>Buscar Categoria</h5>
                                 <select name="category" id="categorias" class="ca-search">
-                            
+                             
                                     
                                 </select>
                                 

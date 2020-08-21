@@ -1,4 +1,7 @@
 <?php
+include("base.php");
+$sql="SELECT * FROM categorias";
+$query=mysqli_query($db,$sql);
 $categoria= $_POST['category'];
 
 if($categoria == "Restaurantes" ){
@@ -9,7 +12,6 @@ if($categoria == "Restaurantes" ){
     header("location: comidaybebidas.html");
 }else if($categoria== "Tiendas Comerciales"){
     header("location: tiendascomerciales.html");
-}else{
-    echo '<script>alert("Usted no ha seleccionado una categoria")</script>';
-    header("location: index.php");
 }
+
+
