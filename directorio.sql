@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 21, 2020 at 05:51 AM
+-- Generation Time: Aug 22, 2020 at 12:03 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.4
 
@@ -49,7 +49,7 @@ INSERT INTO `admin` (`id`, `usuario`, `contraseña`) VALUES
 CREATE TABLE `categorias` (
   `id` int(11) NOT NULL,
   `categoria` varchar(40) NOT NULL,
-  `archivo` varchar(20) NOT NULL
+  `archivo` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -57,10 +57,11 @@ CREATE TABLE `categorias` (
 --
 
 INSERT INTO `categorias` (`id`, `categoria`, `archivo`) VALUES
-(2, 'Restaurantes', ''),
-(3, 'Hoteles', ''),
-(4, 'Comida y Bebidas', ''),
-(5, 'Tiendas Comerciales', '');
+(2, 'Restaurantes', 'restaurante.html'),
+(3, 'Hoteles', 'hoteles.php'),
+(4, 'Comida y Bebidas', 'comidaybebidas.html'),
+(5, 'Tiendas Comerciales', 'tiendascomerciales.html'),
+(7, 'Turismo', '');
 
 -- --------------------------------------------------------
 
@@ -74,6 +75,14 @@ CREATE TABLE `comentarios` (
   `correo` varchar(50) NOT NULL,
   `mensaje` varchar(1000) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `comentarios`
+--
+
+INSERT INTO `comentarios` (`id`, `nombre`, `correo`, `mensaje`) VALUES
+(1, 'federico', '', 'exelente atencion al cliente muy buena pagina xddddddddddd 10/10'),
+(2, 'Diego', '', 'hola el mejor hotel');
 
 -- --------------------------------------------------------
 
@@ -98,9 +107,8 @@ CREATE TABLE `hoteles` (
 --
 
 INSERT INTO `hoteles` (`id`, `nombre`, `descripcion`, `telefono`, `whatsapp`, `direccion`, `nameimg`, `nameimg2`, `nameimg3`) VALUES
-(11, 'Hotel Andes', 'el mejor hotel del universo', 2147483647, 2147483647, 'av. lucas 34', 'cat1.jpg', 'cat-4.jpg', 'cat-5.jpg'),
-(12, 'Hotel dias', 'el mejor hotel del universo', 2323232, 32323232, 'pepito 7477', 'cat-2.jpg', 'contact-add.png', 'how-it-works-3.png'),
-(14, 'Hotel Mendoza', 'assssssssss', 227398089, 2147483647, 'av ddd 6666', 'hotel.jpg', 'video-bg.jpg', 'hero_listing.jpg');
+(15, 'Hotel Mendoza', 'el mejor hotel del universo', 2323232, 2147483647, 'av ddd 3652', 'icons8-remove-24.png', 'f-blog-1.jpg', 'fondo.jpg'),
+(16, 'Hotel dias', 'el mejor hotel del universo', 2147483647, 2147483647, 'pepito 7477', 'contact-add.png', 'blog-bg.jpg', 'hotel.jpg');
 
 --
 -- Indexes for dumped tables
@@ -144,19 +152,19 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `categorias`
 --
 ALTER TABLE `categorias`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `comentarios`
 --
 ALTER TABLE `comentarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `hoteles`
 --
 ALTER TABLE `hoteles`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
