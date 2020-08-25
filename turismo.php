@@ -3,7 +3,7 @@ include("base.php");
 error_reporting(E_ALL ^ E_NOTICE);
 session_start();
 $usuario = $_SESSION['usuario'];
-$sql="SELECT * FROM hoteles";
+$sql="SELECT * FROM turismo";
 $query=mysqli_query($db,$sql);
 $json=array();
 ?>
@@ -26,29 +26,31 @@ $json=array();
 <body>
   <header>
     <nav class="navbar navbar-dark bg-dark">
-      <a class="navbar-brand" href="#">Hoteles</a>
+      <a class="navbar-brand" href="#">Turismo</a>
       <?php
         if($usuario == null){
 
         }else{
           
           ?>
-          <button id="agregar" style="transform:translateX(700px)" class="btn btn-success">Agregar hotel</button>
+          <button id="agregar" style="transform:translateX(700px)" class="btn btn-success">Agregar Turismo</button>
+          <a href="index.php" class="btn btn-info" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        
+        
+        <img src="img/casa.png">
+      </a>
 
           <div id="popup1"style=" background:rgba(0, 0, 0, 0.3); position: fixed; top:0; left: 0; bottom:0; right: 0; display: flex; justify-content: center; align-items: center; z-index:2;">
         <div class="card" id="mostrar2" style="width: 20%; background-color: rgb(102, 102, 102);">
           <div class="card-body">
             <button class="btn btn-danger" id="cerrar1"style=" transform:translateY( -10px) translateX(310px)"><img src="img/cerrar.png"></button>
-            <form method="POST" action="addhotel.php" enctype="multipart/form-data">
+            <form method="POST" action="addturismo.php" enctype="multipart/form-data">
   <div class="form-group">
-    <label for="exampleInputEmail1">Titulo</label>
+    <label for="exampleInputEmail1">Nombre</label>
     <input type="Text"  name="nombre" class="form-control"  aria-describedby="emailHelp">
     
   </div>
-  <div class="form-group">
-    <label >Descripcion</label>
-    <input type="text"  name="desc" class="form-control" >
-  </div>
+  
   <div class="form-group">
     <label >Direccion</label>
     <input type="text"  name="direccion" class="form-control" >
@@ -88,7 +90,7 @@ $json=array();
           <div class="card-body">
             <button class="btn btn-danger" id="cerrar2"style=" transform:translateY( -10px) translateX(310px)"><img src="img/cerrar.png"></button>
             
-          <form method="POST" action="editarhotel.php" enctype="multipart/form-data">
+          <form method="POST" action="editarturismo.php" enctype="multipart/form-data">
           <div class="form-group">
     <label for="exampleInputEmail1">id</label>
     <input type="number" id="id" name="numero"  class="form-control"  aria-describedby="emailHelp">
@@ -99,14 +101,10 @@ $json=array();
     <input type="Text"  id="nombre"name="nombre" class="form-control"  aria-describedby="emailHelp">
     
   </div>
-  <div class="form-group">
-    <label >Descripcion</label>
-    <input type="text" id="descripcion"name="desc" class="form-control" >
-  </div>
+  
   <div class="form-group">
     <label >Direccion</label>
-    <input type="text"  id="direccion" name="direccion" class="form-control" >
-  </div>
+    <input type="text"  id="direccion" name="direccion" class="form-control" >¡
   <div class="form-group">
     <label >Numero de Telefono</label>
     <input type="text" id="telefono"name="telefono" class="form-control" >
@@ -135,13 +133,7 @@ $json=array();
       </div>
           </div>
         <?php } ?>
-      <a  href="index.php" class="btn btn-info" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        
-        
-        <img src="img/casa.png">
-      </a>
-      
-    </nav>
+     
   </header>
   <?php while($row=mysqli_fetch_array($query)){
     
@@ -161,8 +153,7 @@ $json=array();
           <a href="" class="mostrar"><img src="fotos/<?php echo$row['nameimg']?>" style=" transform: translateY(-57px) translateX(-20px); " width="300px" height="200px"></a>
           <button  class="btn btn-danger prueba"  style="transform: translateY(20px);"><img src="https://img.icons8.com/material/24/000000/phone--v1.png"/><?php echo$row['telefono']?></button>
           <button  class="btn btn-success prueba1" style="transform: translateY(20px);"><img src="img/whatsapp.png"><?php echo$row['whatsapp']?></button>
-          <p style="transform: translateX(330px) translateY(-160px); margin-left: 10px; "><?php echo$row['descripcion']?></p>
-          <b><h5 style="transform: translateY(-170px) translateX(350px);"><?php echo $row['direccion']?></h5></b></b>
+          <b><h5 style="transform: translateY(-170px) translateX(350px);"><?php echo $row['direccion']?></h5></b>
         </div>
       </div>
       
@@ -194,7 +185,7 @@ $('.mostrar').click(function (e) {
     $('.popup').show()
     variable=$(this)[0].parentElement
   id=$(variable).attr('num')
-    $.post("imghoteles.php", {id},
+    $.post("imgturismo.php", {id},
       function (response) {
         json= JSON.parse(response);
         img2=''
@@ -227,26 +218,23 @@ $('.editar').click(function (e) {
   $('#popup2').show();
   variable=$(this)[0].parentElement
   id=$(variable).attr('num')
-  $.post("edithotel.php", {id},
+  $.post("editturismo.php", {id},
     function (response) {
        json= JSON.parse(response);
        id='';
        nombre='';
-      descripcion='';
       direccion='';
       telefono='';
       whatsapp='';
       json.forEach(jsons => {
            id = jsons.id
            nombre=jsons.nombre
-           descripcion=jsons.descripcion
            direccion=jsons.direccion
            telefono=jsons.telefono
           whatsapp=jsons.whatsapp
             });
 $('#id').val(id)
 $('#nombre').val(nombre)
-$('#descripcion').val(descripcion)
 $('#direccion').val(direccion)
 $('#telefono').val(telefono)
 $('#whatsapp').val(whatsapp)
@@ -267,9 +255,9 @@ $('.eliminar').click(function (e) {
   e.preventDefault();
   variable=$(this)[0].parentElement
   id=$(variable).attr('num')
-  $.post("eliminarhotel.php", {id},
+  $.post("eliminarturismo.php", {id},
     function (response) {
-      
+      location.reload()
     }
   );
 });

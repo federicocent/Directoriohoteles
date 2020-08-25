@@ -61,6 +61,8 @@ $query1=mysqli_query($db,$sql1);
                     <li class="active" ><a href="index.html">Inicio</a></li>
                     
                     <li><a href="contact.html">Contacto</a></li>
+
+                    <li><a href="quienessomos.html">Quienes Somos</a></li>
                 </ul>
            
            
@@ -130,10 +132,7 @@ $query1=mysqli_query($db,$sql1);
                                 
                             </div>
                             <div class="location-search">
-                                <!--<h5>Tu Localización</h5>
-                                <select class="lo-search">
-                                    
-                                </select>-->
+
                             </div>
                             <button type="submit" name="search">Buscar Ahora</button>
                         </form>
@@ -146,7 +145,7 @@ $query1=mysqli_query($db,$sql1);
 
     <!-- Trending Restaurant Section Begin -->
     <div>
-       <!-- <img alt="COVID-19" class="img-responsive" src="https://www.paginasamarillas.com.co/view/global/common/images/banner/co/COVID-PARA-PACOM_OKOKOK.png">-->
+        <!--<img alt="COVID-19" class="img-responsive" src="https://www.paginasamarillas.com.co/view/global/common/images/banner/co/COVID-PARA-PACOM_OKOKOK.png">-->
            
     </div>
     
@@ -155,7 +154,7 @@ $query1=mysqli_query($db,$sql1);
    <div class="container">
        <div class="row">
            <div class="col sl2">
-               <h1 class="center-aling">Comentarios</h1>
+               <h1 class="center-aling mt-5">Comentarios</h1>
                <div class="carousel center-aling">
                    <?php while($row=mysqli_fetch_array($query1)){
 
@@ -180,165 +179,26 @@ $query1=mysqli_query($db,$sql1);
     
     <!-- Testimonial Section End -->
 
-    <!-- How It Works Section Begin 
-    <section class="work-section set-bg" data-setbg="img/line-bg.jpg">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="section-title">
-                        <h2>How it works</h2>
-                        <p>Explore some of the best places in the world</p>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-4">
-                    <div class="single-work-item">
-                        <div class="number">01.</div>
-                        <div class="work-text">
-                            <h4>Search the portal</h4>
-                            <p>Fusce urna quam, euismod sit amet mollis quis.Aliquam erat volutpat. Morbi id dictum quam, ut.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="single-work-item">
-                        <div class="number">02.</div>
-                        <div class="work-text">
-                            <h4>Choose the one 4u</h4>
-                            <p>Euismod sit amet mollis quis. Ali-quam erat volutpat. Morbi id dictum quam, ut commodo lorem. </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="single-work-item">
-                        <div class="number">03.</div>
-                        <div class="work-text">
-                            <h4>Book it!</h4>
-                            <p>Euismod sit amet mollis quis. Ali-quam erat volutpat. Morbi id dictum quam, ut commodo lorem. </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-     How It Works Section End -->
 
-    <!-- App Section Begin 
-    <section class="app-section spad">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-5">
-                    <img src="img/phone.png" alt="">
-                </div>
-                <div class="col-lg-6 offset-lg-1">
-                    <div class="app-text">
-                        <div class="section-title">
-                            <h2>Get the App now!</h2>
-                            <p>Explore some of the best places in the world</p>
-                        </div>
-                        <p>Morbi id dictum quam, ut commodo lorem. Donec bibendum, enim ut luctus dictum, nisl turpis
-                            scelerisque sem, in dapibus neque odio eu sapien. Morbi ac aliquet erat. Sed dapibus, augue
-                            et malesuada maximus.</p>
-                        <ul>
-                            <li><img src="img/check-icon.png" alt="">Fusce urna quam, euismod sit amet mollis quis, vestibulum
-                                quis veli</li>
-                            <li><img src="img/check-icon.png" alt="">Vestibulum malesuada aliquet libero viverra cursus</li>
-                            <li><img src="img/check-icon.png" alt="">Urna quam, euismod sit amet mollis quis, vestibulum quis veli
-                            </li>
-                        </ul>
-                        <a href="#"><img src="img/apple-store.jpg" alt=""></a>
-                        <a href="#"><img src="img/google-store.jpg" alt=""></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    App Section End -->
+   <!-- App Section End -->
 
 
 
     <!-- Footer Section Begin -->
-    <footer class="footer-section spad">
-        <div class="container">
-           
-            <div class="row">
-                <div class="col-lg-3 col-sm-6">
-                    <div class="footer-widget">
-                        <h4>Usefull Links</h4>
-                        <ul>
-                            <li>About us</li>
-                            <li>Testimonials</li>
-                            <li>How it works</li>
-                            <li>Create an account</li>
-                            <li>Our Services</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-sm-6">
-                    <div class="footer-widget">
-                        <h4>Categories</h4>
-                        <ul>
-                            <li>Hotels</li>
-                            <li>Restaurant</li>
-                            <li>Spa & resorts</li>
-                            <li>Concert & Events</li>
-                            <li>Bars & Pubs</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-sm-6">
-                    <div class="footer-widget">
-                        <h4>Usefull Links</h4>
-                        <ul>
-                            <li>About us</li>
-                            <li>Testimonials</li>
-                            <li>How it works</li>
-                            <li>Create an account</li>
-                            <li>Our Services</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-sm-6">
-                    <div class="footer-widget">
-                        <h4>From the Blog</h4>
-                        <div class="single-blog">
-                            <div class="blog-pic">
-                                <img src="img/f-blog-1.jpg" alt="">
-                            </div>
-                            <div class="blog-text">
-                                <h6>10 Best clubs in town</h6>
-                                <span>March 27, 2019</span>
-                            </div>
-                        </div>
-                        <div class="single-blog">
-                            <div class="blog-pic">
-                                <img src="img/f-blog-2.jpg" alt="">
-                            </div>
-                            <div class="blog-text">
-                                <h6>10 Best clubs in town</h6>
-                                <span>March 27, 2019</span>
-                            </div>
-                        </div>
+    <footer class="footer-section spad" style="padding-bottom:50px; padding-left:0; padding-top:10px;overflow:hidden; ">
+       
                     </div>
                 </div>
             </div>
-            <div class="row footer-bottom">
+            <div class="row footer-bottom" >
                 <div class="col-lg-5 order-2 order-lg-1">
-                    <div class="copyright"><p class="text-white">
+                    <div class="copyright" style="transform:translateY(60%)"><p class="text-white" >
             <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-            Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank" >Colorlib</a>
+           Derechos&copy;<script>document.write(new Date().getFullYear());</script> Todos lo derechos reservados por <a href="#" >Shalom Net</a>
             <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
             </p></div>
                 </div>
-                <div class="col-lg-7 text-center text-lg-right order-1 order-lg-2">
-                    <div class="footer-menu">
-                        <a href="#">Home</a>
-                        <a href="#">Explore</a>
-                        <a href="#">More Cities</a>
-                        <a href="#">News</a>
-                        <a href="#">Contact</a>
-                    </div>
+              
                 </div>
             </div>
         </div>
